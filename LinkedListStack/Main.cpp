@@ -173,6 +173,23 @@ int main()
 	//mine tests
 	//{
 		//Stack test;
+		/*test.Push(1);
+		test.Push(2);
+		test.Push(3);
+		test = test;
+		Stack test0;
+		test0.Push(10);
+		test0.Push(20);
+		test0.Push(30);
+		test = test0;
+		test.Push(4);
+		test.Push(5);
+		test0.Push(40);
+		test = test0;
+		test.Pop();
+		test.Pop();
+		test.Push(3);
+		test = test0;*/
 		/*Stack test0;
 		test.Push(1);
 		test.Push(2);

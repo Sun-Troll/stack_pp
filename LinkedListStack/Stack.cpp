@@ -30,9 +30,25 @@ Stack::Stack(const Stack& source)
 
 const Stack& Stack::operator=(const Stack& source)
 {
-	DeleteMembers();
-	CopyMembers(source);
-	return *this;
+	if (size != source.size)
+	{
+		DeleteMembers();
+		CopyMembers(source);
+		return *this;
+	}
+	else
+	{
+		const Member* sCur = source.first;
+		Member** cur = &first;
+		while (sCur != nullptr)
+		{
+			(*cur)->SetVal(sCur->GetVal());
+			sCur = sCur->GetNext();
+			cur = (*cur)->GetPNext();
+		}
+		assert(*cur == nullptr);
+		return *this;
+	}
 }
 
 void Stack::Push(int val)
@@ -122,6 +138,7 @@ void Stack::DeleteMembers()
 		assert(first != nullptr && first->GetNext() == nullptr);
 		delete first;
 		first = nullptr;
+		size--;
 	}
 	else
 	{
@@ -132,9 +149,12 @@ void Stack::DeleteMembers()
 			delete cur;
 			cur = next;
 			next = cur->GetNext();
+			size--;
 		}
 		first = nullptr;
 		delete cur;
+		size--;
+		assert(size == 0);
 	}
 }
 
@@ -169,6 +189,11 @@ int Stack::Member::DeleteNext()
 	delete next;
 	next = nullptr;
 	return nextVal;
+}
+
+void Stack::Member::SetVal(int valS)
+{
+	val = valS;
 }
 
 Stack::Member* Stack::Member::GetNext() const

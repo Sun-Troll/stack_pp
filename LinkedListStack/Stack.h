@@ -9,6 +9,7 @@ private:
 		Member(int val);
 		void NewPush(int val);
 		int DeleteNext();
+		void SetVal(int valS);
 		Member* GetNext() const;
 		Member** GetPNext();
 		int GetVal() const;
