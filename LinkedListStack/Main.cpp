@@ -170,12 +170,42 @@ int main()
 	_CrtSetReportMode( _CRT_ASSERT,_CRTDBG_MODE_FILE );
 	_CrtSetReportFile( _CRT_ASSERT,_CRTDBG_FILE_STDERR );
 	
-	/*test1();
+	//mine tests
+	//{
+		//Stack test;
+		/*test.Push(1);
+		test.Push(2);
+		test.Push(3);
+		Stack test0 = test;*/
+		/*test.Push(1);
+		test.Push(2);
+		test.Push(3);
+		test.Push(4);*/
+		//test.Push(2);
+		/*int i0 = test.Pop();
+		test.Push(1);
+		int i1 = test.Pop();
+		test.Push(1);
+		test.Push(2);
+		int i2 = test.Pop();
+		test.Push(2);
+		test.Push(3);
+		int i3 = test.Pop();
+		test.Push(3);
+		i3 = test.Pop();
+		i2 = test.Pop();
+		i1 = test.Pop();
+		i0 = test.Pop();*/
+		//int stop = 69;
+	//}
+	//end
+
+	test1();
 	test2();
 	test3();
 	test4();
 	test5();
-	test6();
+	/*test6();
 	test7();
 	test8();*/
 
