@@ -173,6 +173,16 @@ int main()
 	//mine tests
 	//{
 		//Stack test;
+		/*Stack test0;
+		test.Push(1);
+		test.Push(2);
+		test.Push(3);
+		test.Pop();
+		test.Push(3);
+		test.Push(4);
+		test.Pop();
+		test0 = test;
+		Stack test1 = test;*/
 		/*test.Push(1);
 		test.Push(2);
 		test.Push(3);
@@ -205,9 +215,9 @@ int main()
 	test3();
 	test4();
 	test5();
-	/*test6();
+	test6();
 	test7();
-	test8();*/
+	//test8();
 
 	_CrtDumpMemoryLeaks();
 	while( !_kbhit() );

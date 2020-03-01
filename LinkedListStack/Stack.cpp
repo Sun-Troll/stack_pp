@@ -10,34 +10,12 @@ Stack::Stack()
 
 Stack::~Stack()
 {
-	if (size == 0)
-	{
-		assert(first == nullptr);
-	}
-	else if (size == 1)
-	{
-		assert(first != nullptr && first->GetNext() == nullptr);
-		delete first;
-		first = nullptr;
-	}
-	else
-	{
-		Member* cur = first;
-		Member* next = cur->GetNext();
-		while (next != nullptr)
-		{
-			delete cur;
-			cur = next;
-			next = cur->GetNext();
-		}
-		first = nullptr;
-		delete cur;
-	}
+	DeleteMembers();
 }
 
 Stack::Stack(const Stack& source)
 {
-	const Member* sCur = source.first;
+	/*const Member* sCur = source.first;
 	Member** cur = &first;
 	while (sCur != nullptr)
 	{
@@ -46,7 +24,15 @@ Stack::Stack(const Stack& source)
 		cur = (*cur)->GetPNext();
 		size++;
 	}
-	assert(size == source.size);
+	assert(size == source.size);*/
+	CopyMembers(source);
+}
+
+const Stack& Stack::operator=(const Stack& source)
+{
+	DeleteMembers();
+	CopyMembers(source);
+	return *this;
 }
 
 void Stack::Push(int val)
@@ -123,6 +109,47 @@ int Stack::Size() const
 bool Stack::Empty() const
 {
 	return size == 0;
+}
+
+void Stack::DeleteMembers()
+{
+	if (size == 0)
+	{
+		assert(first == nullptr);
+	}
+	else if (size == 1)
+	{
+		assert(first != nullptr && first->GetNext() == nullptr);
+		delete first;
+		first = nullptr;
+	}
+	else
+	{
+		Member* cur = first;
+		Member* next = cur->GetNext();
+		while (next != nullptr)
+		{
+			delete cur;
+			cur = next;
+			next = cur->GetNext();
+		}
+		first = nullptr;
+		delete cur;
+	}
+}
+
+void Stack::CopyMembers(const Stack& source)
+{
+	const Member* sCur = source.first;
+	Member** cur = &first;
+	while (sCur != nullptr)
+	{
+		*cur = new Member(sCur->GetVal());
+		sCur = sCur->GetNext();
+		cur = (*cur)->GetPNext();
+		size++;
+	}
+	assert(size == source.size);
 }
 
 Stack::Member::Member(int val)
